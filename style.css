@@ -161,12 +161,9 @@ li{
   justify-content: center;
   font-family: 'Raleway',Helvetica,Arial,Lucida,sans-serif;
   background-color: #f0ece2;
-  padding: 60px 30px 60px 75px;
+  padding: 60px;
 }
 
-.third-container-title:last-child {
-  white-space: nowrap;
-}
 
 @media (max-width: 800px){
   .three-wide {
