@@ -36,7 +36,7 @@ function moveToProjectGallery () {
 }
 
 function moveToContact () {
-  const contact = document.querySelector(".contact-dave");
+  const contact = document.querySelector("#contact-form");
   contact.scrollIntoView({block: "start", behavior: "smooth"});
 }
 
