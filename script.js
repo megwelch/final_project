@@ -16,9 +16,12 @@ function showNavMenu () {
 const aboutDaveLink = document.querySelector(".about-dave-link");
 const projectGalleryLink = document.querySelector(".project-gallery-link");
 const contactLink = document.querySelector(".contact-link");
+const shopName = document.querySelector(".shop-name");
 
 aboutDaveLink.addEventListener("click", moveToAboutDave);
 projectGalleryLink.addEventListener("click", moveToProjectGallery);
+contactLink.addEventListener("click", moveToContact);
+shopName.addEventListener("click", moveToTopOfPage);
 
 
 function moveToAboutDave () {
@@ -32,10 +35,25 @@ function moveToProjectGallery () {
   projectGallery.scrollIntoView({block: "start", behavior: "smooth"});
 }
 
+function moveToContact () {
+  const contact = document.querySelector(".contact-dave");
+  contact.scrollIntoView({block: "start", behavior: "smooth"});
+}
+
+function moveToTopOfPage () {
+  console.log("click");
+  const topOfPage = document.querySelector(".top-of-page");
+  topOfPage.scrollIntoView({block: "start", behavior: "smooth"});
+}
+
+
+
 aboutDaveLink.addEventListener("click", menuDisappear);
+projectGalleryLink.addEventListener("click", menuDisappear);
+contactLink.addEventListener("click", menuDisappear);
 
 function menuDisappear () {
-  navMenu.classList.add("hide");
+  navMenu.classList.remove("show");
 }
 
 // CONTACT FORM
@@ -60,8 +78,10 @@ function validateForm (event) {
   }
 
   let email = document.querySelector("#email").value;
-  let emailValidation = "@";
-  if (email.indexOf(emailValidation) === -1){
+  if (!email.toLowerCase().match(
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    )
+  ){
     addError("You must provide a valid email address.")
   }
 
@@ -71,8 +91,7 @@ function validateForm (event) {
   }
 }
 
-
-function addError(error) {
+function addError (error) {
   let li = document.createElement("li");
   li.innerText = error;
   errorsList.appendChild(li);
